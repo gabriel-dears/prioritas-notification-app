@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alerta de Triagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" th:style="'background-color: ' + ${headerColor}">
+        <h1>⚠️ ALERTA DE TRIAGEM</h1>
+        <h2 th:text="'Risco: ' + ${riskLevel}">Risco: EMERGENCY</h2>
+    </div>
+
+    <div class="content">
+        <div class="alert-box">
+            <strong>Atenção Equipe Médica:</strong> Um paciente foi classificado com alta prioridade.
+        </div>
+
+        <h3>📋 Dados do Atendimento</h3>
+        <table class="data-table">
+            <tr>
+                <th>Horário:</th>
+                <td th:text="${formattedDate}">01/01/2026</td>
+            </tr>
+            <tr>
+                <th>ID do Paciente:</th>
+                <td th:text="${patientId}">...</td>
+            </tr>
+            <tr>
+                <th>ID da Triagem:</th>
+                <td th:text="${triageId}">...</td>
+            </tr>
+        </table>
+
+        <h3>🩺 Sinais Vitais</h3>
+        <table class="data-table">
+            <tr>
+                <th>Dor no Peito:</th>
+                <td th:style="${hasChestPain} ? 'color: red; font-weight: bold' : 'color: green'"
+                    th:text="${hasChestPain} ? 'SIM 🚨' : 'NÃO'">
+                </td>
+            </tr>
+            <tr>
+                <th>Temperatura:</th>
+                <td th:text="${temperature} + ' °C'">36.5 °C</td>
+            </tr>
+            <tr>
+                <th>Batimentos:</th>
+                <td th:text="${heartRate} + ' bpm'">80 bpm</td>
+            </tr>
+            <tr>
+                <th>Saturação O2:</th>
+                <td th:text="${oxygenSaturation} + '%'">98%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        Prioritas System v1.0 • Mensagem automática.
+    </div>
+</div>
+</body>
+</html>
