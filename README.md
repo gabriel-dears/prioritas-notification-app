@@ -17,6 +17,7 @@ Este serviço foi desenhado para ser resiliente e desacoplado do core da aplica�
 
 - Linguagem: Kotlin 1.9
 - Framework: Spring Boot 3.4
+- JDK (Runtime): Java 17 (LTS), Toolchain configurado via `jvmToolchain(17)`
 - Mensageria: Spring AMQP (RabbitMQ)
 - E-mail: Spring Boot Starter Mail (JavaMailSender)
 - Template: Thymeleaf
@@ -40,18 +41,14 @@ Para que o serviço envie e-mails, é necessário configurar as credenciais SMTP
 
 **Nota: Para utilizar o Gmail, é necessário gerar uma Senha de App nas configurações de segurança da conta Google (2-Step Verification).**
 
-## 🚀 Como Rodar Localmente]
+## 🚀 Como Rodar
 
-Certifique-se de exportar as variáveis de ambiente antes de executar o comando Gradle.
+**Via Docker Compose (Recomendado)**
+
+A partir da raiz do projeto (prioritas-project/), execute:
 
 ```bash
-# 1. Exporte as credenciais (Exemplo Linux/Mac)
-export EMAIL_FROM="seu.email@gmail.com"
-export EMAIL_PASS="sua-senha-de-app"
-export EMAIL_TARGET_LIST="teste@teste.com"
-
-# 2. Execute o serviço
-./gradlew :notification-app:bootRun
+docker compose up --build -d
 ```
 
 ## 🧪 Estrutura do Projeto
