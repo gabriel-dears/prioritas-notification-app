@@ -5,10 +5,10 @@ spring:
   application:
     name: notification-app
   rabbitmq:
-    host: rabbitmq
-    port: 5672
-    username: guest
-    password: guest
+    host: ${SPRING_RABBITMQ_HOST}
+    port: ${SPRING_RABBITMQ_PORT}
+    username: ${SPRING_RABBITMQ_USERNAME}
+    password: ${SPRING_RABBITMQ_PASSWORD}
     listener:
       simple:
         retry:
@@ -19,8 +19,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: gabrielalcantarars@gmail.com
-    password: vamm guna lujg xiql
+    username: ${EMAIL_FROM}
+    password: ${EMAIL_PASS}
     properties:
       mail:
         smtp:
@@ -30,5 +30,5 @@ spring:
 
 prioritas:
   mail:
-    from: "gabrielalcantarars@gmail.com"
-    target-list: "gabrielalcantarars@gmail.com"
+    from: ${EMAIL_FROM}
+    target-list: ${EMAIL_TARGET_LIST}
